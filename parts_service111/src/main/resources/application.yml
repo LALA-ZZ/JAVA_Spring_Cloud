@@ -1,0 +1,34 @@
+server:
+  port: 9003 #端口
+
+spring:
+  application:
+    name: parts-service #服务名称
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://cdb-reh5kfrf.gz.tencentcdb.com:10004/test_spring_cloud?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    url:  jdbc:mysql://cdb-reh5kfrf.gz.tencentcdb.com:10004/tigershop?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+#                                                            tigershop?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: zxcvbnm123!
+
+#  jpa:
+#    database: MySQL
+#    show-sql: true
+#    open-in-view: true
+#配置Eureka
+eureka:
+  client:
+    service-url: #两台server之间可以互相交换信息,为了高可用最好分别注册
+      defaultZone: http://localhost:9000/eureka/
+  instance:
+    prefer-ip-address: true #使用ip地址注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+#mybatis配置
+#  mybatis.type-aliases-package=com.example.demo.model
+#  mybatis.mapper-locations = classpath:mapper/*.xml
+#  mybatis.config-location = classpath:config/sqlMapConfig.xml
+  mybatis:
+    type-aliases-package: cn.testproject.parts.entity
+    mapper-locations:  classpath:mapper/*.xml
+    config-location : classpath:sqlMapConfig.xml

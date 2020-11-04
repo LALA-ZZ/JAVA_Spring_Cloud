@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="order_service/Hibernate" uuid="5094473a-d5e5-4abe-a2d4-53b423ffa897">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://cdb-reh5kfrf.gz.tencentcdb.com:10004/test_spring_cloud?useUnicode=true&amp;characterEncoding=utf8</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="product_service/Hibernate" uuid="860a717c-14b3-417a-b165-2f3f08e29816">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://cdb-reh5kfrf.gz.tencentcdb.com:10004/test_spring_cloud?useUnicode=true&amp;characterEncoding=utf8</jdbc-url>
+    </data-source>
+  </component>
+</project>

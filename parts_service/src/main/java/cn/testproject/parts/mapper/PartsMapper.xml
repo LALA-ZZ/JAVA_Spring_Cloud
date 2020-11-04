@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.testproject.parts.mapper.PartsMapper">
+
+    <select id="selectAllParts" resultType="cn.testproject.parts.entity.Parts">
+        select * from newparts
+    </select>
+
+    <insert id="insertParts">
+        insert into newparts
+		values(#{NEWPARTS_ID},#{NEWPARTS_NAME},#{NEWPARTS_KIND},#{NEWPARTS_SINGLEPRICE},#{NEWPARTS_GUIGE},#{NEWPARTS_UNIT},#{NEWPARTS_AMOUNT},#{NEWPARTS_LOWAMOUNT},#{NEWPARTS_STATUS},#{NEWPARTS_USETAG},#{NEWPARTS_FROM})
+	</insert>
+
+<!--    测试：根据配件id查询配件-->
+    <select id="getPartsById" resultType="cn.testproject.parts.entity.Parts">
+        select * from newparts where NEWPARTS_ID =#{partsid}
+    </select>
+
+</mapper>

@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: api-spring-gateway
+server:
+  port: 8080 #端口
+  cloud: #配置SpringCloudGateway的路由
+    gateway:
+      routes
+        - id: order-service    : #id：我们自定义的路由 ID，保持唯一
+          uri: lb://service-order    #uri：目标服务地址
+          predicates: #路由条件，Predicate 接受一个输入参数，返回一个布尔值结果。该接口包含多种默 认方法来将 Predicate 组合成其他复杂的逻辑（比如：与，或，非）。
+            - Path=/order-service/**
+          filters:    #：过滤规则
+            - RewritePath=/order-service/(?<segment>.*), /$\{segment}
+        - id: product-service
+          uri: lb://service-product
+          predicates:
+            - Path=/product-service/**
+          filters:
+            #        - name: RequestRateLimiter
+            #          args:
+            #            # 使用SpEL从容器中获取对象
+            #            key-resolver: '#{@userKeyResolver}'
+            #            # 令牌桶每秒填充平均速率
+            #            redis-rate-limiter.replenishRate: 1
+            #            # 令牌桶的上限
+            #            redis-rate-limiter.burstCapacity: 3
+            - RewritePath=/product-service/(?<segment>.*), /$\{segment}
+
+  # RequestRateLimiter : 使用限流过滤器,是springcloud gateway提供的
+  # 参数  replenishRate : 向令牌桶中填充的速率
+  #     burstCapacity :令牌桶的容量
